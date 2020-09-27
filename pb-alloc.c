@@ -135,7 +135,7 @@ void* malloc (size_t size) {
   
   size_t    pad = 16 - ( (free_addr + sizeof(header_s)) % 16 ); //padding to be added before header and after free_addr for double world alignment of block_ptr
   pad = pad % 16; //already aligned if free_addr + header_size == 16, so no padding
-  header_s* header_ptr = (header_s*) (free_addr + padding); //pointer to header of the block replaced with address to next available byte in the heap
+  header_s* header_ptr = (header_s*) (free_addr + pad); //pointer to header of the block replaced with address to next available byte in the heap
   void*     block_ptr  = (void*)(free_addr + pad + sizeof(header_s)); //block_ptr becomes address to header, shifted right by the header size
   intptr_t new_free_addr = free_addr + pad + total_size; //next available free address may be shifted to the right by (block_size + header_size)
   if (new_free_addr > end_addr) { //if next possibly free address goes out of the stack's bounds, return Null

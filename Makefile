@@ -1,5 +1,5 @@
 CC            = gcc
-#SPECIAL_FLAGS = -ggdb -Wall -DDEBUG_ALLOC
+SPECIAL_FLAGS = -ggdb -Wall -DDEBUG_ALLOC
 SPECIAL_FLAGS = -ggdb -Wall
 CFLAGS        = -std=gnu99 $(SPECIAL_FLAGS)
 
